@@ -1,0 +1,60 @@
+<div class="container">  
+    <form>
+      <div>
+        <label>Id</label>
+        <input type="text" disabled [(ngModel)]="id" name="id">
+      </div>
+      
+      <div>
+        <label>Name</label>
+        <input type="text" [(ngModel)]="name" name="name">
+      </div>
+      
+      <div>
+        <label>E-mail</label>
+        <input type="text" [(ngModel)]="email" name="email">
+      </div>
+
+      <div>
+        <label>WhatsApp</label>
+        <input type="text" [(ngModel)]="whatsapp" name="whatsapp">
+      </div>
+
+      <div>
+        <label>Person</label>
+        <select [(ngModel)]="personSelectedOption" name="personSelectedOption" (ngModelChange)="onOptionSelected()">
+            <option *ngFor="let option of options$ | async" [value]="option.id">{{ option.name }}</option>
+        </select>
+      </div>
+      
+      <button (click)="buttonClick()">
+        {{ id ? 'Edit' : 'Create' }}  
+      </button>
+    </form>
+    
+    <table>
+      <thead>
+        <th> Id </th>
+        <th> Name </th>
+        <th> E-mail </th>
+        <th> WhatsApp </th>
+        <th> Person </th>
+        <th> <b>Actions</b> </th>
+      </thead>
+    
+      <tbody>
+        <tr *ngFor="let contact of contacts$ | async">          
+          <td> {{ contact.id }} </td>
+          <td> {{ contact.name }} </td>
+          <td> {{ contact.email }} </td>
+          <td> {{ contact.whatsapp }} </td>
+          <td> {{ contact.person.name}} </td>
+          <td> 
+            <span class="action_click" (click)="editFields(contact)" > Edit </span> 
+            <span class="action_click" (click)="removeContact(contact.id!)" > Delete </span> 
+          </td>
+        </tr>
+  
+      </tbody>
+    </table>
+  </div>

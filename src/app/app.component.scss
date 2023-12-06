@@ -1,0 +1,26 @@
+.card-contact-button {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  column-gap: 20px;
+  width: 100vw;
+  height: 100px;  
+  position: fixed;
+}
+
+.btn-menu {
+  border: 0;
+  border-radius: 4px;
+  cursor: pointer;
+  background-color: #5B9A8B;
+  padding: 5px 10px;
+  font-weight: 700;
+  width: 100px;
+  height: 40px;
+  color: #272829;
+
+  &:hover {
+    background-color: #FFF6E0;
+  }
+}

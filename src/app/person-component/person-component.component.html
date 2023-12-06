@@ -1,0 +1,44 @@
+<div class="container">  
+  <form>
+    <div>
+      <label>Id</label>
+      <input type="text" disabled [(ngModel)]="id" name="id">
+    </div>
+    
+    <div>
+      <label>Name</label>
+      <input type="text" [(ngModel)]="name" name="name">
+    </div>
+    
+    <div>
+      <label>Birthdate</label>
+      <input type="text" [(ngModel)]="birth_date" name="birth_date">      
+    </div>
+    
+    <button (click)="buttonClick()">
+      {{ id ? 'Edit' : 'Create' }}  
+    </button>
+  </form>
+  
+  <table>
+    <thead>
+      <th> Id </th>
+      <th> Name </th>
+      <th> Birthdate </th>
+      <th> <b>Actions</b> </th>
+    </thead>
+  
+    <tbody>
+      <tr *ngFor="let person of persons$ | async">
+        <td> {{ person.id }} </td>
+        <td> {{ person.name }} </td>
+        <td> {{ person.birth_date | date: "MM/dd/yyyy" }} </td>
+        <td> 
+          <span class="action_click" (click)="editFields(person)" > Edit </span> 
+          <span class="action_click" (click)="removePerson(person.id!)" > Delete </span> 
+        </td>
+      </tr>
+
+    </tbody>
+  </table>
+</div>
